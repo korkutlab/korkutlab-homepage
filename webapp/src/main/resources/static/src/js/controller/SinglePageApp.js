@@ -9,7 +9,6 @@ function SinglePageApp(options)
         appTemplateId: "main_page",
         pageContent: "#page_content",
         pageLoader: "#page_loader",
-        // TODO move these into pages!
         mainView: "#main_view",
         mainContent: "#main_content",
         pages: {
@@ -51,8 +50,13 @@ function SinglePageApp(options)
         // init section if not initialized yet
         if (!$(_options.pages[id].name).length)
         {
-            var templateFn = _.template($("#" + _options.pages[id].template).html());
-            $(_options.pageContent).append(templateFn(params));
+            // var templateDivId = id + "_template";
+            // $("#page_templates").append("<div id='" + templateDivId + "'></div>");
+
+            $("#page_template").load("pages/" + id + ".html", function() {
+                var templateFn = _.template($("#" + _options.pages[id].template).html());
+                $(_options.pageContent).append(templateFn(params));
+            });
         }
 
         $(_options.pages[id].name).show();
