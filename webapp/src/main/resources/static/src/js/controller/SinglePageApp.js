@@ -4,6 +4,7 @@
 function SinglePageApp(options)
 {
     var _defaultOpts = {
+        preLoad: true,
         pageLoaderDelay: -1,
         appContent: "#app_content",
         appTemplateId: "main_page",
@@ -45,9 +46,8 @@ function SinglePageApp(options)
         }
     }
 
-    function loadPage(id, params)
+    function initPage(id, params)
     {
-        // init section if not initialized yet
         if (!$(_options.pages[id].name).length)
         {
             // var templateDivId = id + "_template";
@@ -58,7 +58,13 @@ function SinglePageApp(options)
                 $(_options.pageContent).append(templateFn(params));
             });
         }
+    }
 
+    function loadPage(id, params)
+    {
+        // init section if not initialized yet
+        initPage(id, params);
+        
         $(_options.pages[id].name).show();
     }
 
@@ -90,6 +96,14 @@ function SinglePageApp(options)
 
         // load home page content initially
         router.init("/home");
+
+        // pre load all page content
+        if (_options.preLoad)
+        {
+            _.each(_options.pages, function(page, id) {
+                initPage(id, page.params);
+            });
+        }
     }
 
     this.init = init;
