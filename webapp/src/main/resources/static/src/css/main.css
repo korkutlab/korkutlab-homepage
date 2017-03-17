@@ -1,0 +1,25 @@
+.title-red {
+    font-family: 'Varela Round',Georgia,sans-serif;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #da291c;
+}
+
+.title-white {
+    font-family: 'Varela Round',Georgia,serif,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #fff;
+}
+
+.section-title {
+    font-family: 'Varela Round',serif,sans-serif;
+}
+
+.mda-logo {
+    padding: 5px;
+    margin-right: 10px;
+}

@@ -56,6 +56,7 @@ function SinglePageApp(options)
             $("#page_template").load("pages/" + id + ".html", function() {
                 var templateFn = _.template($("#" + _options.pages[id].template).html());
                 $(_options.pageContent).append(templateFn(params));
+                $(_options.pages[id].name).hide();
             });
         }
     }
